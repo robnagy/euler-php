@@ -15,3 +15,4 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('euler/{solution_id}', 'SolutionController@get');
