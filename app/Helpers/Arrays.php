@@ -17,4 +17,20 @@ class Arrays
     {
         return array_values(array_unique(array_merge($arr1, $arr2)));
     }
+
+    /**
+     * Removes elements in an array that aren't even numbers.
+     *
+     * @param array $array
+     * @return array
+     */
+    public static function filterForEvenNumbers(array $array) : array
+    {
+        $array = array_filter($array, function($num) {
+            if (is_int($num))
+                return Numbers::isEven($num);
+        });
+        $array = array_values($array);
+        return $array;
+    }
 }
