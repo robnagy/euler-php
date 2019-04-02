@@ -5,6 +5,7 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 use App\Helpers\Multiples;
 use App\Helpers\Arrays;
 use App\Helpers\Fibonacci;
+use App\Helpers\Factors;
 
 class HelpersTest extends TestCase
 {
@@ -78,6 +79,16 @@ class HelpersTest extends TestCase
         $this->assertEquals(
             $expected,
             Arrays::filterForEvenNumbers($array)
+        );
+    }
+
+    public function testGetPrimeFactors()
+    {
+        $int = 15;
+        $expected = [3,5];
+        $this->assertEquals(
+            $expected,
+            Factors::getPrimeFactors($int)
         );
     }
 }
