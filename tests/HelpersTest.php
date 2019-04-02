@@ -7,6 +7,7 @@ use App\Helpers\Factors;
 use App\Helpers\Fibonacci;
 use App\Helpers\Multiples;
 use App\Helpers\Palindrome;
+use App\Helpers\SolutionHelper;
 
 class HelpersTest extends TestCase
 {
@@ -131,5 +132,44 @@ class HelpersTest extends TestCase
             $expected,
             Palindrome::largestPalindromeProduct($int1, $int2, $limit)
         );
+    }
+
+    public function testSolutionHelperSolutionExists()
+    {
+        $exists = 'BaseSolution.php';
+        $expected = true;
+        $this->assertEquals(
+            $expected,
+            SolutionHelper::solutionExists($exists)
+        );
+    }
+
+    public function testSolutionHelperSolutionDoesNotExist()
+    {
+        $exists = 'Solutionx.php';
+        $expected = false;
+        $this->assertEquals(
+            $expected,
+            SolutionHelper::solutionExists($exists)
+        );
+    }
+
+    public function testSolutionHelperMakeSolution()
+    {
+        $filename = 'testing.php';
+        $filecontents = 'test';
+        $expected = strlen($filecontents);
+        $this->assertEquals(
+            $expected,
+            SolutionHelper::makeSolution($filename, $filecontents)
+        );
+
+        $filepath = SolutionHelper::PATH.'/'.$filename;
+        $expected = file_get_contents($filepath);
+        $this->assertEquals(
+            $expected,
+            $filecontents
+        );
+        unlink($filepath);
     }
 }
