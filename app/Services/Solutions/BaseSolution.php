@@ -23,11 +23,11 @@ class BaseSolution
      * is enabled and outputs to PHP
      * error log and class $log.
      *
-     * @param [type] $message
-     * @param [type] $values
+     * @param string $message
+     * @param mixed $values
      * @return void
      */
-    protected function log($message, $values = null)
+    protected function log(string $message, $values = null) : void
     {
         if ($this->debug) {
             error_log($message.' '.json_encode($values));

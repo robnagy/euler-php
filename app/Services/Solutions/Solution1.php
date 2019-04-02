@@ -9,7 +9,7 @@ use App\Helpers\Multiples;
 
 class Solution1 extends BaseSolution implements SolutionInterface
 {
-    public function runMe()
+    public function run()
     {
         $num1 = 3;
         $num2 = 5;

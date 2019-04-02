@@ -36,7 +36,7 @@ class SolutionController extends Controller
 
         $result = [];
         $result['problem'] = $solution_id;
-        $result['solution'] = $solution->runMe();
+        $result['solution'] = $solution->run();
         if ($debug) $result['log'] = $solution->getLog();
 
         return json_encode($result);

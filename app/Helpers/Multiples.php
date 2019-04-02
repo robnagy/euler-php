@@ -22,9 +22,8 @@ Class Multiples
     }
 
     /**
-     * Returns the sum of multiples
-     * generated for two ints, up
-     * to the inclusive $limit;
+     * Returns the sum of multiples generated for
+     * two ints, up to the inclusive $limit;
      *
      * @param integer $int1
      * @param integer $int2
