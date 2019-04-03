@@ -8,6 +8,8 @@ use App\Helpers\Fibonacci;
 use App\Helpers\Multiples;
 use App\Helpers\Palindrome;
 use App\Helpers\SolutionHelper;
+use App\Helpers\Numbers;
+use App\Helpers\Strings;
 
 class HelpersTest extends TestCase
 {
@@ -81,16 +83,6 @@ class HelpersTest extends TestCase
         $this->assertEquals(
             $expected,
             Arrays::filterForEvenNumbers($array)
-        );
-    }
-
-    public function testGetPrimeFactors()
-    {
-        $int = 15;
-        $expected = [3,5];
-        $this->assertEquals(
-            $expected,
-            Factors::getPrimeFactors($int)
         );
     }
 
@@ -171,5 +163,55 @@ class HelpersTest extends TestCase
             $filecontents
         );
         unlink($filepath);
+    }
+
+    public function testSumOfDigits()
+    {
+        $num = 1234;
+        $expected = 10;
+        $this->assertEquals(
+            $expected,
+            Numbers::sumOfDigits($num)
+        );
+    }
+
+    public function testAlternatingSumOfDigits()
+    {
+        $num = 12345;
+        $expected = 1-2+3-4+5;
+        $this->assertEquals(
+            $expected,
+            Numbers::alternatingSumOfDigits($num)
+        );
+    }
+
+    public function testFirstXCharsOfString()
+    {
+        $string = "12345";
+        $expected = "123";
+        $this->assertEquals(
+            $expected,
+            Strings::firstXChars($string, 3)
+        );
+    }
+
+    public function testLastXCharsOfString()
+    {
+        $string = "12345";
+        $expected = "345";
+        $this->assertEquals(
+            $expected,
+            Strings::lastXChars($string, 3)
+        );
+    }
+
+    public function testLowestCommonMultipleOfNumbersTill10()
+    {
+        $limit = 10;
+        $expected = 2520;
+        $this->assertEquals(
+            $expected,
+            Multiples::lowestCommonMultiple($limit)
+        );
     }
 }

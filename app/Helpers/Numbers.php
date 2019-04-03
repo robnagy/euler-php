@@ -14,4 +14,42 @@ class Numbers
     {
         return ($num % 2 === 0);
     }
+
+    /**
+     * Returns sum of digits of $num
+     *
+     * @param integer $num
+     * @return integer
+     */
+    public static function sumOfDigits(int $num) : int
+    {
+        $num = (string) $num;
+        $result = 0;
+        for ($x = 0; $x < strlen($num); $x++) {
+            $result += (int)$num[$x];
+        }
+        return $result;
+    }
+
+    /**
+     * Returns the alternating sum of digits of $num
+     * e.g. $num = 12345; returns 1-2+3-4+5 = 3
+     *
+     * @param integer $num
+     * @return integer
+     */
+    public static function alternatingSumOfDigits(int $num) : int
+    {
+        $num = (string) $num;
+        $result = 0;
+        $add = true;
+        for ($x = 0; $x < strlen($num); $x++) {
+            if ($add)
+                $result += (int)$num[$x];
+            else
+                $result -= (int)$num[$x];
+            $add = !$add;
+        }
+        return $result;
+    }
 }

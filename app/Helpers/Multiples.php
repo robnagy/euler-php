@@ -36,4 +36,27 @@ Class Multiples
         $multiples2 = self::multiplesOf($int2, $limit);
         return array_sum(Arrays::mergeValues($multiples1, $multiples2));
     }
+
+    /**
+     * Returns the lowest common multiple of
+     * positive numbers up till $limit.
+     *
+     * @param [type] $limit
+     * @return integer
+     */
+    public static function lowestCommonMultiple($limit) : int
+    {
+        $range = [];
+        for ($x = $limit-2; $x > 1; $x-- ) {
+            $range[] = $x;
+        }
+
+        $leap = $limit * ($limit - 1);
+        // $leap = $limit;
+        $x = $leap;
+        while (!Factors::areTheseFactorsOf($range, $x)) {
+            $x += $leap;
+        }
+        return $x;
+    }
 }
