@@ -52,4 +52,37 @@ class Numbers
         }
         return $result;
     }
+
+    /**
+     * Calculates the sum of squares for x=1 -> x=$limit
+     * Returns sum(x^2, x+1^2, x+2^2, ..., $limit^2)
+     *
+     * @param integer $limit
+     * @return integer
+     */
+    public static function sumOfSquares(int $limit) : int
+    {
+        $sum = 0;
+        for ($x = 1; $x <= $limit; $x++) {
+            $sum += $x * $x;
+        }
+        return $sum;
+    }
+
+    /**
+     * Calculates square of sums for x=1 -> x=$limit
+     * Returns sum(x, x+1, x+2, ..., limit)^2
+     *
+     * @param integer $limit
+     * @return integer
+     */
+    public static function squareOfSums(int $limit) : int
+    {
+        $sum = 0;
+        for ($x = 1; $x <= $limit; $x++) {
+            $sum += $x;
+        }
+        return $sum * $sum;
+    }
+
 }

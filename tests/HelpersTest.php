@@ -10,6 +10,8 @@ use App\Helpers\Palindrome;
 use App\Helpers\SolutionHelper;
 use App\Helpers\Numbers;
 use App\Helpers\Strings;
+use App\Helpers\Exponents;
+use App\Helpers\Primes;
 
 class HelpersTest extends TestCase
 {
@@ -212,6 +214,42 @@ class HelpersTest extends TestCase
         $this->assertEquals(
             $expected,
             Multiples::lowestCommonMultiple($limit)
+        );
+    }
+
+    public function testModularExponentiation1()
+    {
+        $base = 4;
+        $exponent = 13;
+        $modulus = 497;
+        $expected = 445;
+        // $start_time = microtime(true);
+        $this->assertEquals(
+            $expected,
+            Exponents::modularExponentiation1($base, $exponent, $modulus)
+        );
+        // $end_time = microtime(true);
+        // $execution_time = ($end_time - $start_time);
+        // echo PHP_EOL." Execution time of script = ".$execution_time." sec".PHP_EOL;
+    }
+
+    public function testSumOfSquares()
+    {
+        $limit = 10;
+        $expected = 385;
+        $this->assertEquals(
+            $expected,
+            Numbers::sumOfSquares($limit)
+        );
+    }
+
+    public function testSquareOfSums()
+    {
+        $limit = 10;
+        $expected = 3025;
+        $this->assertEquals(
+            $expected,
+            Numbers::squareOfSums($limit)
         );
     }
 }
