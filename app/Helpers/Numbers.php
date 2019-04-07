@@ -85,4 +85,20 @@ class Numbers
         return $sum * $sum;
     }
 
+    /**
+     * Returns the product of digits of $num
+     *
+     * @param string $num
+     * @return integer
+     */
+    public static function productOfDigits(string $num) : int
+    {
+        // echo '<br>Getting product for '.$num;
+        $product = 1;
+        for ($x = 0; $x < strlen($num); $x++) {
+            $product *= (int)$num[$x];
+        }
+        return $product;
+    }
+
 }

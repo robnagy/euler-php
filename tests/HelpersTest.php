@@ -263,4 +263,14 @@ class HelpersTest extends TestCase
         );
     }
 
+    public function testProductOfDigits()
+    {
+        $num = 9989;
+        $expected = 5832;
+        $this->assertEquals(
+            $expected,
+            Numbers::productOfDigits($num)
+        );
+    }
+
 }
