@@ -2,6 +2,9 @@
 
 namespace App\Services\Solutions;
 
+use Illuminate\Support\Facades\Log;
+
+
 class BaseSolution
 {
     protected $debug;
@@ -30,8 +33,12 @@ class BaseSolution
     protected function log(string $message, $values = null) : void
     {
         if ($this->debug) {
-            error_log($message.' '.json_encode($values));
             $this->log[] = [$message => $values];
+
+            if ($values)
+                $values = is_string($values) ? $values : json_encode($values);
+
+            Log::debug($message.' '.$values);
         }
     }
 
