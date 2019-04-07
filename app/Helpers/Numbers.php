@@ -101,4 +101,30 @@ class Numbers
         return $product;
     }
 
+    /**
+     * Uses Euclids formula to calculate values
+     * for a,b,c where a^2 + b^2 = c^2
+     * and a + b + c = $limit.
+     *
+     * @param integer $limit
+     * @return array ['a' => $a, 'b' => $b, 'c' => $c]
+     */
+    public static function euclidsFormula(int $limit) : array
+    {
+        for ($n = 1; $n < $limit; $n++) {
+            for ($m = $n+1; $m < $limit; $m++) {
+                $a = ($m * $m) - ($n * $n);
+                $b = 2 * $m * $n;
+                $c = ($m * $m) + ($n * $n);
+                if (($a + $b + $c) == $limit) {
+                    return [
+                        'a' => $a,
+                        'b' => $b,
+                        'c' => $c,
+                    ];
+                }
+            }
+        }
+    }
+
 }

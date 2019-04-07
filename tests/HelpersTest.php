@@ -273,4 +273,17 @@ class HelpersTest extends TestCase
         );
     }
 
+    public function testEuclidsFormula()
+    {
+        $limit = 12;
+        $expected = [
+            'a' => 3,
+            'b' => 4,
+            'c' => 5,
+        ];
+        $this->assertEquals(
+            $expected,
+            Numbers::euclidsFormula($limit)
+        );
+    }
 }
