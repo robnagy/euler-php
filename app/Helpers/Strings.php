@@ -31,4 +31,23 @@ class Strings
         $temp = (string) $var;
         return substr($temp, -$count);
     }
+
+    /**
+     * Converts $data into an array of arrays.
+     * Expected format:
+     * "A B C D\nC D E F"
+     * Return format:
+     * [['A', 'B', 'C', 'D'], ['C', 'D', 'E', 'F']]
+     *
+     * @param string $data
+     * @return array
+     */
+    public static function multiLineWordsToArrays(string $data) : array
+    {
+        $data = explode("\n", $data);
+        foreach ($data as $index => $row) {
+            $data[$index] = explode(' ', $row);
+        }
+        return $data;
+    }
 }
