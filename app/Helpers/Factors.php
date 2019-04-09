@@ -321,4 +321,54 @@ class Factors
     //     }
     //     return false;
     // }
+
+    /**
+     * Brute forces the factors of $num
+     * (inefficient)
+     *
+     * @param integer $int
+     * @return array
+     */
+    public static function getFactorsBrute(int $num) : array
+    {
+        $factors = [];
+        for ($x = 2; $x <= $num; $x++)
+        {
+            $test = $num;
+            while ($test % $x === 0)
+            {
+                $factors[$x] = 1;
+                $test = $test / $x;
+                $factors[$test] = 1;
+            }
+        }
+        $factors = array_keys($factors);
+        sort($factors);
+        return $factors;
+    }
+
+    /**
+     * Returns the number of factors of $num.
+     * Calculated by multiplying together
+     * the powers of the prime factors.
+     *
+     * @param integer $num
+     * @return integer
+     */
+    public static function numberOfFactors(int $num) : int
+    {
+        $primes = Factors::getPrimeFactors($num);
+        $primeCounts = [];
+        foreach ($primes as $prime) {
+            $count = 0;
+            $remainder = $num;
+            while ($remainder % $prime === 0) {
+                $count++;
+                $remainder = $remainder / $prime;
+            }
+            $primeCounts[] = ($count + 1);
+        }
+        $numberOfFactors = Arrays::arrayProduct($primeCounts);
+        return $numberOfFactors;
+    }
 }

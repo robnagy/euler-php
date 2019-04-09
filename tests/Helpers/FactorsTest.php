@@ -1,7 +1,5 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 use App\Helpers\Factors;
 
 class FactorsTest extends TestCase
@@ -346,4 +344,24 @@ class FactorsTest extends TestCase
     //         Factors::is17AFactor($num)
     //     );
     // }
+
+    public function testGetFactorsBrute()
+    {
+        $num = 10;
+        $expected = [1,2,5,10];
+        $this->assertEquals(
+            $expected,
+            Factors::getFactorsBrute($num)
+        );
+    }
+
+    public function testNumberOfFactors()
+    {
+        $num = 10;
+        $expected = 4;
+        $this->assertEquals(
+            $expected,
+            Factors::numberOfFactors($num)
+        );
+    }
 }
