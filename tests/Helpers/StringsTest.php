@@ -35,4 +35,14 @@ class StringsTest extends TestCase
             Strings::multiLineWordsToArrays($string)
         );
     }
+
+    public function testSumOfIntString()
+    {
+        $string = '666111444';
+        $expected = 33;
+        $this->assertEquals(
+            $expected,
+            Strings::sumOfIntString($string)
+        );
+    }
 }

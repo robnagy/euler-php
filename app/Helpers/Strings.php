@@ -50,4 +50,19 @@ class Strings
         }
         return $data;
     }
+
+    /**
+     * Returns the sum of a string of int
+     *
+     * @param string $data e.g. "1234"
+     * @return integer e.g. 10
+     */
+    public static function sumOfIntString(string $data) : int
+    {
+        $sum = 0;
+        for ($x = 0; $x < strlen($data); $x++) {
+            $sum += (int) $data[$x];
+        }
+        return $sum;
+    }
 }
