@@ -71,4 +71,32 @@ class Primes
         $guess = (int) ($guess * 0.8);
         return $guess;
     }
+
+    /**
+     * Returns all primes below $limit
+     *
+     * @param integer $limit
+     * @return array
+     */
+    public static function getPrimesBelow(int $limit) : array
+    {
+        $primes = [];
+        $sieve = [];
+        for ($x = 2; $x < $limit;)
+        {
+            if (!isset($sieve[$x]))
+            {
+                $num = $x;
+                do {
+                    $num += $x;
+                    $sieve[$num] = 1;
+                } while ($num < $limit);
+                $primes[] = $x;
+            }
+
+            if ($x === 2) $x++;
+            else $x += 2;
+        }
+        return $primes;
+    }
 }
