@@ -127,4 +127,32 @@ class Numbers
         }
     }
 
+    /**
+     * Calculates n! of $num
+     * Limited to int max
+     *
+     * @param integer $num
+     * @return void
+     */
+    public static function factorialOf(int $num) : int
+    {
+        if ($num === 1) return 1;
+        return $num * self::factorialOf($num - 1);
+    }
+
+    /**
+     * Returns the number of lattice
+     * pathways available for a
+     * square of $blocks size.
+     *
+     * @param integer $blocks
+     * @return void
+     */
+    public static function latticePathways(int $blocks) : int
+    {
+        $sideBlocks = (int) sqrt($blocks);
+        $val = self::factorialOf($sideBlocks);
+        $result = Numbers::factorialOf( 2 * $sideBlocks ) / ($val * $val);
+        return $result;
+    }
 }
