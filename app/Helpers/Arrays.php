@@ -33,4 +33,46 @@ class Arrays
         $array = array_values($array);
         return $array;
     }
+
+    /**
+     * Returns the product of items in $array
+     *
+     * @param array $array
+     * @return integer
+     */
+    public static function arrayProduct(array $array) : int
+    {
+        $product = 1;
+        foreach ($array as $item) $product *= $item;
+        return $product;
+    }
+
+    /**
+     * Returns the first $limit chars of the
+     * sum of strings in $data array.
+     *
+     * e.g. ['1111', '2222', '3333'], $limit = 3
+     * Returns 666 instead of 6666.
+     *
+     * @param array $data
+     * @param integer $limit
+     * @return string
+     */
+    public static function arraySumPartial(array $data, int $limit) : string
+    {
+        $sum = 0;
+        $lastResult = -1;
+        $cutOff = $limit;
+        while ($sum != $lastResult)
+        {
+            $lastResult = $sum;
+            $sum = 0;
+            foreach ($data as $row) {
+                $sum += (int) substr($row, 0, $cutOff);
+            }
+            $sum = substr((string)$sum, 0, $limit);
+            $cutOff++;
+        }
+        return $sum;
+    }
 }
