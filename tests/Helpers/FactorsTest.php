@@ -364,4 +364,14 @@ class FactorsTest extends TestCase
             Factors::numberOfFactors($num)
         );
     }
+
+    public function testProperFactors()
+    {
+        $num = 220;
+        $expected = [1,2,4,5,10,11,20,22,44,55,110];
+        $this->assertEquals(
+            $expected,
+            Factors::getProperFactors($num)
+        );
+    }
 }

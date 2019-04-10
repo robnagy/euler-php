@@ -152,4 +152,37 @@ class Numbers
         return gmp_fact($num);
     }
 
+    /**
+     * Determines the amicable pairs
+     * for numbers up to $limit
+     *
+     * @param integer $limit
+     * @return array
+     */
+    public static function findAmicableNumbersUpTo(int $limit) : array
+    {
+        $sumsOfFactors = [];
+        $amicable = [];
+        for ($x = 2; $x < $limit; $x++)
+        {
+            if (!isset($sumsOfFactors[$x]))
+            {
+                $factors = Factors::getProperFactors($x);
+                $y = $sumsOfFactors[$x] = array_sum($factors);
+                $sumY = 0;
+                if ($y < $limit) {
+                    if (!isset($sumsOfFactors[$y]))
+                    {
+                        $factors = Factors::getProperFactors($y);
+                        $sumY = array_sum($factors);
+                        $sumsOfFactors[$y] = $sumY;
+                    }
+                }
+                if ($x === $sumY) {
+                    $amicable[] = [$x, $y];
+                }
+            }
+        }
+        return $amicable;
+    }
 }

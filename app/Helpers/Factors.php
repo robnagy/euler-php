@@ -371,4 +371,28 @@ class Factors
         $numberOfFactors = Arrays::arrayProduct($primeCounts);
         return $numberOfFactors;
     }
+
+    /**
+     * Finds all proper factors for $num
+     *
+     * @param integer $num
+     * @return array
+     */
+    public static function getProperFactors(int $num) : array
+    {
+        $primes = Factors::getPrimeFactors($num);
+        $factors = [1 => 1];
+        foreach ($primes as $prime) {
+            $temp = $prime;
+            while ($temp < $num) {
+                if ($num % $temp === 0) {
+                    $factors[$temp] = 1;
+                }
+                $temp += $prime;
+            }
+        }
+        $factors = array_keys($factors);
+        sort($factors);
+        return $factors;
+    }
 }

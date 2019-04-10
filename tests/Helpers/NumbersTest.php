@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Numbers;
+use Symfony\Component\Finder\Comparator\NumberComparator;
 
 class NumbersTest extends TestCase
 {
@@ -85,6 +86,16 @@ class NumbersTest extends TestCase
         $this->assertEquals(
             $expected,
             Numbers::factorialOfLarge($num)
+        );
+    }
+
+    public function testAmicableNumbersUpTo300()
+    {
+        $limit = 300;
+        $expected = [[220, 284]];
+        $this->assertEquals(
+            $expected,
+            Numbers::findAmicableNumbersUpTo($limit)
         );
     }
 }
