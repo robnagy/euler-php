@@ -77,14 +77,4 @@ class NumbersTest extends TestCase
             Numbers::factorialOf($num)
         );
     }
-
-    public function testLatticePathways9Blocks()
-    {
-        $blocks = 9;
-        $expected = 20;
-        $this->assertEquals(
-            $expected,
-            Numbers::latticePathways($blocks)
-        );
-    }
 }
