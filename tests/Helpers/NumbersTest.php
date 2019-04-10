@@ -77,4 +77,14 @@ class NumbersTest extends TestCase
             Numbers::factorialOf($num)
         );
     }
+
+    public function testFactorialBigInt()
+    {
+        $num = 30;
+        $expected = "265252859812191058636308480000000";
+        $this->assertEquals(
+            $expected,
+            Numbers::factorialOfLarge($num)
+        );
+    }
 }

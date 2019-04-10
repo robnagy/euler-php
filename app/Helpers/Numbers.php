@@ -128,16 +128,28 @@ class Numbers
     }
 
     /**
-     * Calculates n! of $num
-     * Limited to int max
+     * Calculates n! of $num, limited
+     * to int max, approximately 20!
      *
      * @param integer $num
-     * @return void
+     * @return int
      */
     public static function factorialOf(int $num) : int
     {
         if ($num === 1) return 1;
         return $num * self::factorialOf($num - 1);
+    }
+
+    /**
+     * Calculates n! of $num using GMP
+     *
+     * @param integer $num
+     * @return string
+     */
+    public static function factorialOfLarge(int $num) : string
+    {
+        if ($num === 1) return 1;
+        return gmp_fact($num);
     }
 
 }
