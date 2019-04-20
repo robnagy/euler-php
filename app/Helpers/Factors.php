@@ -386,22 +386,10 @@ class Factors
      */
     public static function numberOfFactors(int $num) : int
     {
-        // $primes = Factors::getPrimeFactors($num);
-        // $primeCounts = [];
-        // foreach ($primes as $prime) {
-        //     $count = 0;
-        //     $remainder = $num;
-        //     while ($remainder % $prime === 0) {
-        //         $count++;
-        //         $remainder = $remainder / $prime;
-        //     }
-        //     $primeCounts[] = ($count + 1);
-        // }
         $primeCounts = array_values(Factors::getPrimeFactorsWithExponents($num));
         foreach ($primeCounts as $key => $value) {
             $primeCounts[$key] = ++$value;
         }
-        // echo PHP_EOL.'prime counts are '.json_encode($primeCounts).' for '.$num.PHP_EOL;
         $numberOfFactors = Arrays::arrayProduct($primeCounts);
         return $numberOfFactors;
     }

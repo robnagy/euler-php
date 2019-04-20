@@ -10,7 +10,7 @@ class Solution16 extends BaseSolution implements SolutionInterface
 {
     /**
      * Calculates sum of the digits
-     * of the number 21000
+     * of the number 2^1000
      *
      * @return void
      */
