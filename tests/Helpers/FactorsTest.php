@@ -14,6 +14,16 @@ class FactorsTest extends TestCase
         );
     }
 
+    public function testGetPrimeFactorsWithExponents()
+    {
+        $int = 20;
+        $expected = [2 => 2, 5 => 1];
+        $this->assertEquals(
+            $expected,
+            Factors::getPrimeFactorsWithExponents($int)
+        );
+    }
+
     public function testIsX17AFactorOf170()
     {
         $num = 170;

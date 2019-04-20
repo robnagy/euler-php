@@ -5,7 +5,9 @@ namespace App\Helpers;
 class Factors
 {
     /**
-     * Generates the prime factors of given $num
+     * Generates the prime factors of $num
+     * without the exponents of each:
+     * e.g. 8 is 2x2x2, returns 2
      *
      * @param integer $int
      * @return array
@@ -22,6 +24,33 @@ class Factors
             }
         }
         $primeFactors = array_keys($primeFactors);
+        return $primeFactors;
+    }
+
+    /**
+     * Generates the prime factors of a given $num
+     * along with how often they are used.
+     * $num = 20, returns {2:2, 5:1}
+     *
+     * @param integer $int
+     * @return array
+     */
+    public static function getPrimeFactorsWithExponents(int $num) : array
+    {
+        $primeFactors = [];
+        for ($x = 2; $x <= $num; $x++)
+        {
+            while ($num % $x === 0)
+            {
+                if (isset($primeFactors[$x])) {
+                    $primeFactors[$x]++;
+                } else {
+                    $primeFactors[$x] = 1;
+                }
+                $num = $num / $x;
+            }
+        }
+        // $primeFactors = array_keys($primeFactors);
         return $primeFactors;
     }
 
@@ -63,12 +92,12 @@ class Factors
         if (isset($knownFactors[$x])) return true;
 
         // Optimisations removed, too slow!
-        // $method = 'is'.$x.'AFactor';
-        // if (method_exists(Factors::class, $method)) {
-        //     if (self::$method($num)) {
-        //         $knownFactors[$x] = 1;
-        //     };
-        // }
+        $method = 'is'.$x.'AFactor';
+        if (method_exists(Factors::class, $method)) {
+            if (self::$method($num)) {
+                $knownFactors[$x] = 1;
+            };
+        }
 
         $primeFactors = self::getPrimeFactors($x);
 
@@ -96,7 +125,7 @@ class Factors
         return $manualTest;
     }
 
-    //"Optimizations" commented out, as they benchmarked slower than "brute force"
+    // //"Optimizations" commented out, as they benchmarked slower than "brute force"
 
     // /**
     //  * Determines if 2 is a factor of $num
@@ -357,17 +386,22 @@ class Factors
      */
     public static function numberOfFactors(int $num) : int
     {
-        $primes = Factors::getPrimeFactors($num);
-        $primeCounts = [];
-        foreach ($primes as $prime) {
-            $count = 0;
-            $remainder = $num;
-            while ($remainder % $prime === 0) {
-                $count++;
-                $remainder = $remainder / $prime;
-            }
-            $primeCounts[] = ($count + 1);
+        // $primes = Factors::getPrimeFactors($num);
+        // $primeCounts = [];
+        // foreach ($primes as $prime) {
+        //     $count = 0;
+        //     $remainder = $num;
+        //     while ($remainder % $prime === 0) {
+        //         $count++;
+        //         $remainder = $remainder / $prime;
+        //     }
+        //     $primeCounts[] = ($count + 1);
+        // }
+        $primeCounts = array_values(Factors::getPrimeFactorsWithExponents($num));
+        foreach ($primeCounts as $key => $value) {
+            $primeCounts[$key] = ++$value;
         }
+        // echo PHP_EOL.'prime counts are '.json_encode($primeCounts).' for '.$num.PHP_EOL;
         $numberOfFactors = Arrays::arrayProduct($primeCounts);
         return $numberOfFactors;
     }

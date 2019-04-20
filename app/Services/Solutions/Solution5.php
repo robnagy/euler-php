@@ -16,8 +16,11 @@ class Solution5 extends BaseSolution implements SolutionInterface
      */
     public function run()
     {
+        $this->startTimer();
         $limit = 20;
-        return Multiples::lowestCommonMultiple($limit);
+        $result = Multiples::lowestCommonMultiple($limit);
+        $this->endTimer();
+        return $result;
     }
 
 }

@@ -47,16 +47,26 @@ Class Multiples
     public static function lowestCommonMultiple($limit) : int
     {
         $range = [];
-        for ($x = $limit-2; $x > 1; $x-- ) {
+        for ($x = $limit-1; $x > 1; $x-- ) {
             $range[] = $x;
         }
 
-        $leap = $limit * ($limit - 1);
-        // $leap = $limit;
-        $x = $leap;
-        while (!Factors::areTheseFactorsOf($range, $x)) {
-            $x += $leap;
+        $primeFactorMaxes = [];
+
+        foreach ($range as $x) {
+            // get prime factors, and count of primes factors
+            $factors = Factors::getPrimeFactorsWithExponents($x);
+            foreach ($factors as $factor => $count) {
+                if (!isset($primeFactorMaxes[$factor]) || $primeFactorMaxes[$factor] < $count) {
+                    $primeFactorMaxes[$factor] = $count;
+                }
+            }
         }
-        return $x;
+        $total = 1;
+        foreach ($primeFactorMaxes as $prime => $count) {
+            $total *= pow($prime, $count);
+        }
+
+        return $total;
     }
 }
