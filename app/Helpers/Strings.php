@@ -65,4 +65,22 @@ class Strings
         }
         return $sum;
     }
+
+    /**
+     * Returns the sum of the lower case alphabetical
+     * positions of each character in $word.
+     * 'cxyz' = 3 + 24 + 25 + 26
+     *
+     * @param string $word
+     * @return integer
+     */
+    public static function alphabeticalValue(string $word) : int
+    {
+        $letters = str_split($word);
+        $sum = 0;
+        foreach ($letters as $letter) {
+            $sum += ord(strtolower($letter)) - 96;
+        }
+        return $sum;
+    }
 }
