@@ -185,4 +185,21 @@ class Numbers
         }
         return $amicable;
     }
+
+    /**
+     * Generates abundant numbers up to and including $limit
+     *
+     * @param integer $limit
+     * @return array
+     */
+    public static function generateAbundantNumbers(int $limit) : array
+    {
+        $abundantNumbers = [];
+        for ($x = 12; $x <= $limit; $x++) {
+            if (array_sum(Factors::getProperFactors($x)) > $x) {
+                $abundantNumbers[] = $x;
+            }
+        }
+        return $abundantNumbers;
+    }
 }

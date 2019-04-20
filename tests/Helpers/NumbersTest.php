@@ -98,4 +98,14 @@ class NumbersTest extends TestCase
             Numbers::findAmicableNumbersUpTo($limit)
         );
     }
+
+    public function generateAbundantNumbers()
+    {
+        $limit = 30;
+        $expected = [12, 16, 18, 20, 22, 24, 28];
+        $this->assertEquals(
+            $expected,
+            Numbers::generateAbundantNumbers($limit)
+        );
+    }
 }
