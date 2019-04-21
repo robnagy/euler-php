@@ -3,7 +3,6 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use App\Helpers\Factors;
 use App\Helpers\Numbers;
 
 class Solution24 extends BaseSolution implements SolutionInterface

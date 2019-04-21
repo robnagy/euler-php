@@ -49,7 +49,7 @@ class StringsTest extends TestCase
     public function testAlphabeticalValue()
     {
         $string = 'abcz';
-        $expected = 1+2+3+26;
+        $expected = 1 + 2 + 3 + 26;
         $this->assertEquals(
             $expected,
             Strings::alphabeticalValue($string)

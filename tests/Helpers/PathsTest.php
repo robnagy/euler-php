@@ -16,7 +16,7 @@ class PathsTest extends TestCase
 
     public function testMaximumPathSum()
     {
-        $data = [[2], [3,4], [5,6,7]];
+        $data = [[2], [3, 4], [5, 6, 7]];
         $expected = 13;
         $this->assertEquals(
             $expected,

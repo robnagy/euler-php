@@ -10,7 +10,7 @@ class Numbers
      * @param integer $int
      * @return boolean
      */
-    public static function isEven(int $num) : bool
+    public static function isEven(int $num): bool
     {
         return ($num % 2 === 0);
     }
@@ -21,12 +21,12 @@ class Numbers
      * @param integer $num
      * @return integer
      */
-    public static function sumOfDigits(int $num) : int
+    public static function sumOfDigits(int $num): int
     {
         $num = (string) $num;
         $result = 0;
         for ($x = 0; $x < strlen($num); $x++) {
-            $result += (int)$num[$x];
+            $result += (int) $num[$x];
         }
         return $result;
     }
@@ -38,16 +38,18 @@ class Numbers
      * @param integer $num
      * @return integer
      */
-    public static function alternatingSumOfDigits(int $num) : int
+    public static function alternatingSumOfDigits(int $num): int
     {
         $num = (string) $num;
         $result = 0;
         $add = true;
         for ($x = 0; $x < strlen($num); $x++) {
-            if ($add)
-                $result += (int)$num[$x];
-            else
-                $result -= (int)$num[$x];
+            if ($add) {
+                $result += (int) $num[$x];
+            } else {
+                $result -= (int) $num[$x];
+            }
+
             $add = !$add;
         }
         return $result;
@@ -60,7 +62,7 @@ class Numbers
      * @param integer $limit
      * @return integer
      */
-    public static function sumOfSquares(int $limit) : int
+    public static function sumOfSquares(int $limit): int
     {
         $sum = 0;
         for ($x = 1; $x <= $limit; $x++) {
@@ -76,7 +78,7 @@ class Numbers
      * @param integer $limit
      * @return integer
      */
-    public static function squareOfSums(int $limit) : int
+    public static function squareOfSums(int $limit): int
     {
         $sum = 0;
         for ($x = 1; $x <= $limit; $x++) {
@@ -91,12 +93,12 @@ class Numbers
      * @param string $num
      * @return integer
      */
-    public static function productOfDigits(string $num) : int
+    public static function productOfDigits(string $num): int
     {
         // echo '<br>Getting product for '.$num;
         $product = 1;
         for ($x = 0; $x < strlen($num); $x++) {
-            $product *= (int)$num[$x];
+            $product *= (int) $num[$x];
         }
         return $product;
     }
@@ -109,10 +111,10 @@ class Numbers
      * @param integer $limit
      * @return array ['a' => $a, 'b' => $b, 'c' => $c]
      */
-    public static function euclidsFormula(int $limit) : array
+    public static function euclidsFormula(int $limit): array
     {
         for ($n = 1; $n < $limit; $n++) {
-            for ($m = $n+1; $m < $limit; $m++) {
+            for ($m = $n + 1; $m < $limit; $m++) {
                 $a = ($m * $m) - ($n * $n);
                 $b = 2 * $m * $n;
                 $c = ($m * $m) + ($n * $n);
@@ -134,9 +136,12 @@ class Numbers
      * @param integer $num
      * @return int
      */
-    public static function factorialOf(int $num) : int
+    public static function factorialOf(int $num): int
     {
-        if ($num === 1) return 1;
+        if ($num === 1) {
+            return 1;
+        }
+
         return $num * self::factorialOf($num - 1);
     }
 
@@ -146,9 +151,12 @@ class Numbers
      * @param integer $num
      * @return string
      */
-    public static function factorialOfLarge(int $num) : string
+    public static function factorialOfLarge(int $num): string
     {
-        if ($num === 1) return 1;
+        if ($num === 1) {
+            return 1;
+        }
+
         return gmp_fact($num);
     }
 
@@ -159,20 +167,17 @@ class Numbers
      * @param integer $limit
      * @return array
      */
-    public static function findAmicableNumbersUpTo(int $limit) : array
+    public static function findAmicableNumbersUpTo(int $limit): array
     {
         $sumsOfFactors = [];
         $amicable = [];
-        for ($x = 2; $x < $limit; $x++)
-        {
-            if (!isset($sumsOfFactors[$x]))
-            {
+        for ($x = 2; $x < $limit; $x++) {
+            if (!isset($sumsOfFactors[$x])) {
                 $factors = Factors::getProperFactors($x);
                 $y = $sumsOfFactors[$x] = array_sum($factors);
                 $sumY = 0;
                 if ($y < $limit) {
-                    if (!isset($sumsOfFactors[$y]))
-                    {
+                    if (!isset($sumsOfFactors[$y])) {
                         $factors = Factors::getProperFactors($y);
                         $sumY = array_sum($factors);
                         $sumsOfFactors[$y] = $sumY;
@@ -192,7 +197,7 @@ class Numbers
      * @param integer $limit
      * @return array
      */
-    public static function generateAbundantNumbers(int $limit) : array
+    public static function generateAbundantNumbers(int $limit): array
     {
         $abundantNumbers = [];
         for ($x = 12; $x <= $limit; $x++) {

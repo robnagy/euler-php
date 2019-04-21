@@ -17,8 +17,8 @@ class Solution20 extends BaseSolution implements SolutionInterface
     {
         $num = 100;
         $factorial = Numbers::factorialOfLarge($num);
-        $this->log('factorial of '.$num, $factorial);
-        $sum = Strings::sumOfIntString((string)$factorial);
+        $this->log('factorial of ' . $num, $factorial);
+        $sum = Strings::sumOfIntString((string) $factorial);
         return $sum;
     }
 }

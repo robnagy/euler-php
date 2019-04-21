@@ -8,7 +8,7 @@ class MultiplesTest extends TestCase
     {
         $num = 1;
         $limit = 3;
-        $expected = [1,2,3];
+        $expected = [1, 2, 3];
         $this->assertEquals(
             $expected,
             Multiples::multiplesOf($num, $limit)

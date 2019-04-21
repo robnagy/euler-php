@@ -1,7 +1,6 @@
 <?php
 
 use App\Helpers\Numbers;
-use Symfony\Component\Finder\Comparator\NumberComparator;
 
 class NumbersTest extends TestCase
 {
@@ -18,7 +17,7 @@ class NumbersTest extends TestCase
     public function testAlternatingSumOfDigits()
     {
         $num = 12345;
-        $expected = 1-2+3-4+5;
+        $expected = 1 - 2 + 3 - 4 + 5;
         $this->assertEquals(
             $expected,
             Numbers::alternatingSumOfDigits($num)

@@ -3,7 +3,6 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use App\Helpers\Factors;
 use App\Helpers\Numbers;
 
 class Solution21 extends BaseSolution implements SolutionInterface
@@ -19,8 +18,7 @@ class Solution21 extends BaseSolution implements SolutionInterface
         $limit = 10000;
         $amicablePairs = Numbers::findAmicableNumbersUpTo($limit);
         $sum = 0;
-        foreach ($amicablePairs as $pair)
-        {
+        foreach ($amicablePairs as $pair) {
             foreach ($pair as $num) {
                 $sum += $num;
             }

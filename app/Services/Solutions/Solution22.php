@@ -3,8 +3,8 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use Illuminate\Support\Facades\Storage;
 use App\Helpers\Strings;
+use Illuminate\Support\Facades\Storage;
 
 class Solution22 extends BaseSolution implements SolutionInterface
 {

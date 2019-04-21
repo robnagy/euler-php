@@ -4,7 +4,6 @@ namespace App\Services\Solutions;
 
 use Illuminate\Support\Facades\Log;
 
-
 class BaseSolution
 {
     protected $debug;
@@ -47,15 +46,15 @@ class BaseSolution
      * @param mixed $values
      * @return void
      */
-    protected function log(string $message, $values = null) : void
+    protected function log(string $message, $values = null): void
     {
         if ($this->debug) {
             $this->log[] = [$message => $values];
 
-            if ($values)
+            if ($values) {
                 $values = is_string($values) ? $values : json_encode($values);
-
-            Log::debug($message.' '.$values);
+            }
+            Log::debug($message . ' ' . $values);
         }
     }
 
@@ -64,7 +63,7 @@ class BaseSolution
      *
      * @return array
      */
-    public function getLog() : array
+    public function getLog(): array
     {
         return $this->log;
     }

@@ -3,9 +3,7 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use App\Helpers\Arrays;
 use App\Helpers\Multiples;
-
 
 class Solution1 extends BaseSolution implements SolutionInterface
 {

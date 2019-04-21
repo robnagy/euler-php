@@ -34,7 +34,7 @@ class SolutionTest extends TestCase
             SolutionHelper::makeSolution($filename, $filecontents)
         );
 
-        $filepath = SolutionHelper::PATH.'/'.$filename;
+        $filepath = SolutionHelper::PATH . '/' . $filename;
         $expected = file_get_contents($filepath);
         $this->assertEquals(
             $expected,

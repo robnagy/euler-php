@@ -10,12 +10,16 @@ class Palindrome
      * @param string $text
      * @return boolean
      */
-    public static function isPalindrome(string $text) : bool
+    public static function isPalindrome(string $text): bool
     {
-        $x = 0; $y = strlen($text) - 1;
+        $x = 0;
+        $y = strlen($text) - 1;
         while ($x < $y) {
-            if ($text[$x] !== $text[$y]) return false;
-            $x++; $y--;
+            if ($text[$x] !== $text[$y]) {
+                return false;
+            }
+            $x++;
+            $y--;
         }
         return true;
     }
@@ -32,14 +36,12 @@ class Palindrome
      */
     public static function largestPalindromeProduct(int $num1, int $num2, int $limit)
     {
-        while ($num1 > $limit)
-        {
-            while ($num2 > $limit)
-            {
+        while ($num1 > $limit) {
+            while ($num2 > $limit) {
                 $result = $num1 * $num2;
-                if (self::isPalindrome((string) $result))
+                if (self::isPalindrome((string) $result)) {
                     return $result;
-
+                }
                 $num2--;
             }
             $num1--;

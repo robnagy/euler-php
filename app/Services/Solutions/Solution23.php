@@ -3,7 +3,6 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use App\Helpers\Factors;
 use App\Helpers\Numbers;
 
 class Solution23 extends BaseSolution implements SolutionInterface
@@ -21,7 +20,7 @@ class Solution23 extends BaseSolution implements SolutionInterface
 
         $sumsOfAbundantNumbers = [];
         for ($x = 0; $x < count($abundantNumbers); ++$x) {
-            for ($y = $x; $y < count($abundantNumbers)-1; $y++) {
+            for ($y = $x; $y < count($abundantNumbers) - 1; $y++) {
                 $num = $abundantNumbers[$x] + $abundantNumbers[$y];
                 if ($num > $limit) {
                     continue 2;

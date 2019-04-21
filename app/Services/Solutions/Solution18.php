@@ -18,7 +18,7 @@ class Solution18 extends BaseSolution implements SolutionInterface
     }
 
     protected $data =
-'75
+        '75
 95 64
 17 47 82
 18 35 87 10

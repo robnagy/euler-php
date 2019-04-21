@@ -12,17 +12,15 @@ class Primes
      * @param integer $count
      * @return array
      */
-    public static function generatePrimes(int $count) : array
+    public static function generatePrimes(int $count): array
     {
         $primes = [];
         $sieve = [];
         $estimate = self::estimateNumbersContainingXPrimes($count);
         $x = 2;
 
-        while (count($primes) < $count)
-        {
-            if (!isset($sieve[$x]))
-            {
+        while (count($primes) < $count) {
+            if (!isset($sieve[$x])) {
                 if (isset($primes[$x])) {
                     $num = $primes[$x];
                 } else {
@@ -34,13 +32,16 @@ class Primes
                 } while ($num <= $estimate);
                 $primes[$x] = $num;
             }
-            if ($x === 2) $x++;
-            else $x += 2;
+            if ($x === 2) {
+                $x++;
+            } else {
+                $x += 2;
+            }
 
             if ($x > $estimate) {
                 $increase = (int) $estimate * 0.05;
                 $estimate += $increase;
-                echo PHP_EOL.'increasing estimate by '.$increase;
+                echo PHP_EOL . 'increasing estimate by ' . $increase;
                 $x = 2;
             }
         }
@@ -56,12 +57,12 @@ class Primes
      * @param integer $x
      * @return integer
      */
-    public static function estimateNumbersContainingXPrimes(int $x) : int
+    public static function estimateNumbersContainingXPrimes(int $x): int
     {
         $multiplier = 10;
         $guess = $multiplier * $x;
         do {
-            $estimate = (int)($guess / Log($guess));
+            $estimate = (int) ($guess / Log($guess));
             if ($estimate < $x) {
                 $multiplier += 0.3;
                 $guess = $multiplier * $x;
@@ -78,14 +79,12 @@ class Primes
      * @param integer $limit
      * @return array
      */
-    public static function getPrimesBelow(int $limit) : array
+    public static function getPrimesBelow(int $limit): array
     {
         $primes = [];
         $sieve = [];
-        for ($x = 2; $x < $limit;)
-        {
-            if (!isset($sieve[$x]))
-            {
+        for ($x = 2; $x < $limit;) {
+            if (!isset($sieve[$x])) {
                 $num = $x;
                 do {
                     $num += $x;
@@ -94,8 +93,12 @@ class Primes
                 $primes[] = $x;
             }
 
-            if ($x === 2) $x++;
-            else $x += 2;
+            if ($x === 2) {
+                $x++;
+            } else {
+                $x += 2;
+            }
+
         }
         return $primes;
     }

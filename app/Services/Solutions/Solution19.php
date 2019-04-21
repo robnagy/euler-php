@@ -22,7 +22,9 @@ class Solution19 extends BaseSolution implements SolutionInterface
         $endDate->setDate(2000, 12, 31);
         $sundays = 0;
         while ($startDate->lt($endDate)) {
-            if ($startDate->dayName === 'Sunday') $sundays++;
+            if ($startDate->dayName === 'Sunday') {
+                $sundays++;
+            }
             $startDate->addMonthNoOverflow();
         }
         return $sundays;

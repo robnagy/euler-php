@@ -30,13 +30,15 @@ class PalindromeTest extends TestCase
         $expected = false;
         $this->assertEquals(
             $expected,
-            Palindrome::isPalindrome((string)$palindrome)
+            Palindrome::isPalindrome((string) $palindrome)
         );
     }
 
     public function testNumbersLargestPalindromeProduct()
     {
-        $int1 = 99; $int2 = 99; $limit = 90;
+        $int1 = 99;
+        $int2 = 99;
+        $limit = 90;
         $expected = 9009;
         $this->assertEquals(
             $expected,

@@ -11,7 +11,7 @@ class NumbersToWords
             'eighteen', 'nineteen',
         ],
         [
-            'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
+            'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety',
         ],
         'hundred',
         'thousand',
@@ -30,7 +30,7 @@ class NumbersToWords
         $this->original = (string) $num;
     }
 
-    public function convert() : string
+    public function convert(): string
     {
         while (strlen($this->num) > 0) {
             switch (strlen($this->num)) {
@@ -54,10 +54,10 @@ class NumbersToWords
     protected function handleThousands()
     {
         if ($this->num % 1000 === 0) {
-            $this->response .= $this->words[0][$this->num[0]].' '.$this->words[3];
+            $this->response .= $this->words[0][$this->num[0]] . ' ' . $this->words[3];
             $this->num = '';
         } else {
-            $this->response .= $this->words[0][$this->num[0]].' '.$this->words[3];
+            $this->response .= $this->words[0][$this->num[0]] . ' ' . $this->words[3];
             if ($this->num[1] === '0') {
                 $this->response .= ' and ';
                 if ($this->num[2] === '0') {
@@ -76,10 +76,10 @@ class NumbersToWords
     protected function handleHundreds()
     {
         if ($this->num % 100 === 0) {
-            $this->response .= $this->words[0][$this->num[0]].' '.$this->words[2];
+            $this->response .= $this->words[0][$this->num[0]] . ' ' . $this->words[2];
             $this->num = '';
         } else {
-            $this->response .= $this->words[0][$this->num[0]].' '.$this->words[2].' and ';
+            $this->response .= $this->words[0][$this->num[0]] . ' ' . $this->words[2] . ' and ';
             if ($this->num[1] === '0') {
                 $this->num = substr($this->num, 2);
             } else {
@@ -90,8 +90,8 @@ class NumbersToWords
 
     protected function handleTens()
     {
-        if ((int)$this->num < 20) {
-            $this->response .= $this->words[0][(int)$this->num];
+        if ((int) $this->num < 20) {
+            $this->response .= $this->words[0][(int) $this->num];
             $this->num = '';
         } else {
             $this->response .= $this->words[1][$this->num[0]];

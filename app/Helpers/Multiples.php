@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-Class Multiples
+class Multiples
 {
     /**
      * Returns an array containing multiples of $int,
@@ -12,7 +12,7 @@ Class Multiples
      * @param integer $inclusiveLimit
      * @return array
      */
-    public static function multiplesOf(int $int, int $inclusiveLimit) : array
+    public static function multiplesOf(int $int, int $inclusiveLimit): array
     {
         $results = [];
         for ($x = $int; $x <= $inclusiveLimit; $x += $int) {
@@ -30,7 +30,7 @@ Class Multiples
      * @param integer $limit
      * @return integer
      */
-    public static function sumOfMultiples(int $int1, int $int2, int $limit) : int
+    public static function sumOfMultiples(int $int1, int $int2, int $limit): int
     {
         $multiples1 = self::multiplesOf($int1, $limit);
         $multiples2 = self::multiplesOf($int2, $limit);
@@ -44,10 +44,10 @@ Class Multiples
      * @param [type] $limit
      * @return integer
      */
-    public static function lowestCommonMultiple($limit) : int
+    public static function lowestCommonMultiple($limit): int
     {
         $range = [];
-        for ($x = $limit-1; $x > 1; $x-- ) {
+        for ($x = $limit - 1; $x > 1; $x--) {
             $range[] = $x;
         }
 

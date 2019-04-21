@@ -13,7 +13,7 @@ class Arrays
      * @param array $arr2
      * @return array
      */
-    public static function mergeValues(array $arr1, array $arr2) : array
+    public static function mergeValues(array $arr1, array $arr2): array
     {
         return array_values(array_unique(array_merge($arr1, $arr2)));
     }
@@ -24,11 +24,13 @@ class Arrays
      * @param array $array
      * @return array
      */
-    public static function filterForEvenNumbers(array $array) : array
+    public static function filterForEvenNumbers(array $array): array
     {
-        $array = array_filter($array, function($num) {
-            if (is_int($num))
+        $array = array_filter($array, function ($num) {
+            if (is_int($num)) {
                 return Numbers::isEven($num);
+            }
+
         });
         $array = array_values($array);
         return $array;
@@ -40,10 +42,13 @@ class Arrays
      * @param array $array
      * @return integer
      */
-    public static function arrayProduct(array $array) : int
+    public static function arrayProduct(array $array): int
     {
         $product = 1;
-        foreach ($array as $item) $product *= $item;
+        foreach ($array as $item) {
+            $product *= $item;
+        }
+
         return $product;
     }
 
@@ -58,19 +63,18 @@ class Arrays
      * @param integer $limit
      * @return string
      */
-    public static function arraySumPartial(array $data, int $limit) : string
+    public static function arraySumPartial(array $data, int $limit): string
     {
         $sum = 0;
         $lastResult = -1;
         $cutOff = $limit;
-        while ($sum != $lastResult)
-        {
+        while ($sum != $lastResult) {
             $lastResult = $sum;
             $sum = 0;
             foreach ($data as $row) {
                 $sum += (int) substr($row, 0, $cutOff);
             }
-            $sum = substr((string)$sum, 0, $limit);
+            $sum = substr((string) $sum, 0, $limit);
             $cutOff++;
         }
         return $sum;

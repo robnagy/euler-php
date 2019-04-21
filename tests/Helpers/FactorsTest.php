@@ -7,7 +7,7 @@ class FactorsTest extends TestCase
     public function testGetPrimeFactors()
     {
         $int = 15;
-        $expected = [3,5];
+        $expected = [3, 5];
         $this->assertEquals(
             $expected,
             Factors::getPrimeFactors($int)
@@ -358,7 +358,7 @@ class FactorsTest extends TestCase
     public function testGetFactorsBrute()
     {
         $num = 10;
-        $expected = [1,2,5,10];
+        $expected = [1, 2, 5, 10];
         $this->assertEquals(
             $expected,
             Factors::getFactorsBrute($num)
@@ -378,7 +378,7 @@ class FactorsTest extends TestCase
     public function testProperFactors()
     {
         $num = 220;
-        $expected = [1,2,4,5,10,11,20,22,44,55,110];
+        $expected = [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110];
         $this->assertEquals(
             $expected,
             Factors::getProperFactors($num)

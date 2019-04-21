@@ -3,7 +3,6 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use App\Helpers\Numbers;
 use App\Helpers\NumbersToWords;
 
 class Solution17 extends BaseSolution implements SolutionInterface

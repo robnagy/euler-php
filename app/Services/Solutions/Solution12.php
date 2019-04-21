@@ -4,8 +4,6 @@ namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
 use App\Helpers\Factors;
-use App\Helpers\Primes;
-use App\Helpers\Arrays;
 
 class Solution12 extends BaseSolution implements SolutionInterface
 {

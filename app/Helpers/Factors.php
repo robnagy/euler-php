@@ -12,13 +12,11 @@ class Factors
      * @param integer $int
      * @return array
      */
-    public static function getPrimeFactors(int $num) : array
+    public static function getPrimeFactors(int $num): array
     {
         $primeFactors = [];
-        for ($x = 2; $x <= $num; $x++)
-        {
-            while ($num % $x === 0)
-            {
+        for ($x = 2; $x <= $num; $x++) {
+            while ($num % $x === 0) {
                 $primeFactors[$x] = 1;
                 $num = $num / $x;
             }
@@ -35,13 +33,11 @@ class Factors
      * @param integer $int
      * @return array
      */
-    public static function getPrimeFactorsWithExponents(int $num) : array
+    public static function getPrimeFactorsWithExponents(int $num): array
     {
         $primeFactors = [];
-        for ($x = 2; $x <= $num; $x++)
-        {
-            while ($num % $x === 0)
-            {
+        for ($x = 2; $x <= $num; $x++) {
+            while ($num % $x === 0) {
                 if (isset($primeFactors[$x])) {
                     $primeFactors[$x]++;
                 } else {
@@ -61,17 +57,13 @@ class Factors
      * @param integer $num
      * @return boolean
      */
-    public static function areTheseFactorsOf(array $these, int $num) : bool
+    public static function areTheseFactorsOf(array $these, int $num): bool
     {
         $knownFactors = [];
-        foreach ($these as $x)
-        {
-            if (! self::isXAFactor($x, $num, $knownFactors))
-            {
+        foreach ($these as $x) {
+            if (!self::isXAFactor($x, $num, $knownFactors)) {
                 return false;
-            }
-            else
-            {
+            } else {
                 $knownFactors[$x] = 1;
             }
         }
@@ -87,12 +79,14 @@ class Factors
      * @param integer $num
      * @return boolean
      */
-    public static function isXAFactor(int $x, int $num, array &$knownFactors = []) : bool
+    public static function isXAFactor(int $x, int $num, array &$knownFactors = []): bool
     {
-        if (isset($knownFactors[$x])) return true;
+        if (isset($knownFactors[$x])) {
+            return true;
+        }
 
         // Optimisations removed, too slow!
-        $method = 'is'.$x.'AFactor';
+        $method = 'is' . $x . 'AFactor';
         if (method_exists(Factors::class, $method)) {
             if (self::$method($num)) {
                 $knownFactors[$x] = 1;
@@ -103,17 +97,12 @@ class Factors
 
         // force manual calculation on primes and composite
         // numbers that have a single prime factor
-        if (count($primeFactors) > 1)
-        {
-            foreach ($primeFactors as $factor)
-            {
-                if ($factor !== $num)
-                {
-                    if (!self::isXAFactor($factor, $num))
-                    {
+        if (count($primeFactors) > 1) {
+            foreach ($primeFactors as $factor) {
+                if ($factor !== $num) {
+                    if (!self::isXAFactor($factor, $num)) {
                         return false;
-                    } else
-                    {
+                    } else {
                         $knownFactors[$factor] = 1;
                     }
                 }
@@ -121,7 +110,10 @@ class Factors
         }
 
         $manualTest = $num % $x === 0;
-        if ($manualTest) $knownFactors[$x] = 1;
+        if ($manualTest) {
+            $knownFactors[$x] = 1;
+        }
+
         return $manualTest;
     }
 
@@ -358,14 +350,12 @@ class Factors
      * @param integer $int
      * @return array
      */
-    public static function getFactorsBrute(int $num) : array
+    public static function getFactorsBrute(int $num): array
     {
         $factors = [];
-        for ($x = 2; $x <= $num; $x++)
-        {
+        for ($x = 2; $x <= $num; $x++) {
             $test = $num;
-            while ($test % $x === 0)
-            {
+            while ($test % $x === 0) {
                 $factors[$x] = 1;
                 $test = $test / $x;
                 $factors[$test] = 1;
@@ -384,7 +374,7 @@ class Factors
      * @param integer $num
      * @return integer
      */
-    public static function numberOfFactors(int $num) : int
+    public static function numberOfFactors(int $num): int
     {
         $primeCounts = array_values(Factors::getPrimeFactorsWithExponents($num));
         foreach ($primeCounts as $key => $value) {
@@ -400,7 +390,7 @@ class Factors
      * @param integer $num
      * @return array
      */
-    public static function getProperFactors(int $num) : array
+    public static function getProperFactors(int $num): array
     {
         $primes = Factors::getPrimeFactors($num);
         $factors = [1 => 1];

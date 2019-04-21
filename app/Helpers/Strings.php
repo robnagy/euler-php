@@ -12,7 +12,7 @@ class Strings
      * @param integer $count
      * @return string
      */
-    public static function firstXChars($var, int $count) : string
+    public static function firstXChars($var, int $count): string
     {
         $temp = (string) $var;
         return substr($temp, 0, $count);
@@ -26,7 +26,7 @@ class Strings
      * @param integer $count
      * @return string
      */
-    public static function lastXChars($var, int $count) : string
+    public static function lastXChars($var, int $count): string
     {
         $temp = (string) $var;
         return substr($temp, -$count);
@@ -42,7 +42,7 @@ class Strings
      * @param string $data
      * @return array
      */
-    public static function multiLineWordsToArrays(string $data) : array
+    public static function multiLineWordsToArrays(string $data): array
     {
         $data = explode("\n", $data);
         foreach ($data as $index => $row) {
@@ -57,7 +57,7 @@ class Strings
      * @param string $data e.g. "1234"
      * @return integer e.g. 10
      */
-    public static function sumOfIntString(string $data) : int
+    public static function sumOfIntString(string $data): int
     {
         $sum = 0;
         for ($x = 0; $x < strlen($data); $x++) {
@@ -74,7 +74,7 @@ class Strings
      * @param string $word
      * @return integer
      */
-    public static function alphabeticalValue(string $word) : int
+    public static function alphabeticalValue(string $word): int
     {
         $letters = str_split($word);
         $sum = 0;

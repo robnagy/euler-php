@@ -3,7 +3,6 @@
 namespace App\Services\Solutions;
 
 use App\Contracts\SolutionInterface;
-use App\Helpers\Numbers;
 use App\Helpers\Strings;
 
 class Solution16 extends BaseSolution implements SolutionInterface
@@ -16,7 +15,7 @@ class Solution16 extends BaseSolution implements SolutionInterface
      */
     public function run()
     {
-        $result = gmp_pow(2,1000);
+        $result = gmp_pow(2, 1000);
         $this->log($result);
         $result = Strings::sumOfIntString($result);
         return $result;

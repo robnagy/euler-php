@@ -5,7 +5,6 @@ namespace App\Services\Solutions;
 use App\Contracts\SolutionInterface;
 use App\Helpers\Factors;
 
-
 class Solution3 extends BaseSolution implements SolutionInterface
 {
     /**

@@ -2,10 +2,9 @@
 
 namespace App\Services\Solutions;
 
-use App\Helpers\Fibonacci;
-use App\Helpers\Arrays;
 use App\Contracts\SolutionInterface;
-
+use App\Helpers\Arrays;
+use App\Helpers\Fibonacci;
 
 class Solution2 extends BaseSolution implements SolutionInterface
 {
