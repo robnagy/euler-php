@@ -21,4 +21,24 @@ class Fibonacci
         }
         return $sequence;
     }
+
+    /**
+     * Returns the index of the Fibonacci number >= to $limit
+     *
+     * @param \GMP $limit
+     * @return integer
+     */
+    public static function getIndexLarge(\GMP $limit): int
+    {
+        $num = gmp_init(3);
+        $index = 4;
+        $previous = 2;
+        while ($num < $limit) {
+            $temp = $num;
+            $num += $previous;
+            $previous = $temp;
+            $index++;
+        }
+        return $index;
+    }
 }

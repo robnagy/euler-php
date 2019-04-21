@@ -14,4 +14,13 @@ class FibonacciTest extends TestCase
         );
     }
 
+    public function testGetIndexOf()
+    {
+        $limit = gmp_init(100);
+        $expected = 12;
+        $this->assertEquals(
+            $expected,
+            Fibonacci::getIndexLarge($limit)
+        );
+    }
 }
