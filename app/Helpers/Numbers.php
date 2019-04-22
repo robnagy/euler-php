@@ -207,4 +207,32 @@ class Numbers
         }
         return $abundantNumbers;
     }
+
+    /**
+     * Calculates the recurring part of the decimal form
+     * of the fraction $numerator / $denominator
+     *
+     * @param integer $numerator
+     * @param integer $denominator
+     * @return string
+     */
+    public static function getRecurringPartOfDecimal(int $numerator, int $denominator): string
+    {
+        $pattern = '';
+        $found = [];
+        do {
+            if ($denominator > $numerator) {
+                if (count($found) > 0) {
+                    $found[] = $numerator;
+                    $pattern .= '0';
+                }
+                $numerator *= 10;
+            } else {
+                $pattern .= floor($numerator / $denominator);
+                $found[] = $numerator;
+                $numerator = ($numerator % $denominator) * 10;
+            }
+        } while (!in_array($numerator, $found));
+        return $pattern;
+    }
 }

@@ -98,13 +98,24 @@ class NumbersTest extends TestCase
         );
     }
 
-    public function generateAbundantNumbers()
+    public function testGenerateAbundantNumbers()
     {
         $limit = 30;
-        $expected = [12, 16, 18, 20, 22, 24, 28];
+        $expected = [12, 18, 20, 24, 30];
         $this->assertEquals(
             $expected,
             Numbers::generateAbundantNumbers($limit)
+        );
+    }
+
+    public function testGetRecurringPartOfDecimal()
+    {
+        $numerator = 1;
+        $denominator = 7;
+        $expected = "142857";
+        $this->assertEquals(
+            $expected,
+            Numbers::getRecurringPartOfDecimal($numerator, $denominator)
         );
     }
 }

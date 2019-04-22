@@ -55,4 +55,14 @@ class StringsTest extends TestCase
             Strings::alphabeticalValue($string)
         );
     }
+
+    public function testFindLargestRecurringSubString()
+    {
+        $string = 'qwert1234qwert1234qwert1234';
+        $expected = 'qwert1234';
+        $this->assertEquals(
+            $expected,
+            Strings::findLargestRecurringSequence($string)
+        );
+    }
 }

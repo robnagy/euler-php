@@ -83,4 +83,32 @@ class Strings
         }
         return $sum;
     }
+
+    /**
+     * Finds the largest recurring sequence contained within $text.
+     * If $minLength is set, ignores sequences less than it.
+     *
+     * @param string $text
+     * @param integer $minLength
+     * @return string
+     */
+    public static function findLargestRecurringSequence(string $text, int $minLength = 2): string
+    {
+        $end = strlen($text) - 1;
+        $recurring = '';
+        for ($y = (int) $end / 2; $y > 2; $y--) {
+            for ($x = 0; $x < $end - $y; $x++) {
+                $section = substr($text, $x, $y);
+                $section2 = substr($text, $x + $y, $y);
+                if ($section === $section2) {
+                    $recurring = $section;
+                    if (strlen($section) < $minLength) {
+                        break 2;
+                    }
+                }
+            }
+        }
+
+        return $recurring;
+    }
 }
