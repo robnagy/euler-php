@@ -8,7 +8,7 @@ class BaseSolution
 {
     protected $debug;
     protected $log;
-    protected $startTime;
+    private $startTime;
 
     /**
      * Constructor function, sets debug value.
@@ -31,7 +31,7 @@ class BaseSolution
         $end_time = microtime(true);
         if (isset($this->startTime)) {
             $execution_time = ($end_time - $this->startTime);
-            $this->log('Execution time', $execution_time);
+            $this->log('Execution time', $execution_time . 's');
         } else {
             $this->log('Execution time', 'Timer not started');
         }
