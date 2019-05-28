@@ -118,4 +118,14 @@ class NumbersTest extends TestCase
             Numbers::getRecurringPartOfDecimal($numerator, $denominator)
         );
     }
+
+    public function testNumberSpiralDiagonalSum()
+    {
+        $length = 5;
+        $expected = 101;
+        $this->assertEquals(
+            $expected,
+            Numbers::spiralDiagonalSum($length)
+        );
+    }
 }

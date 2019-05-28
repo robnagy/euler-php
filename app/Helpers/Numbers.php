@@ -235,4 +235,39 @@ class Numbers
         } while (!in_array($numerator, $found));
         return $pattern;
     }
+
+    /**
+     * Calculates the sum of diagonals in a spiral square with given length
+     * e.g. 3
+     * 7 8 9
+     * 6 1 2
+     * 5 4 3
+     * = 26
+     *
+     * @param integer $length Even number
+     * @return void
+     */
+    public static function spiralDiagonalSum(int $length)
+    {
+        // length must be odd to have diagonals
+        if ($length % 2 == 0) {
+            return 0;
+        }
+
+        $limit = $length * $length;
+        $diag = 0;
+        $add = 2;
+        $leaveAdd = 4;
+        for ($x = 1; $x <= $limit; $x += $add) {
+            $diag += $x;
+            // adjust add if leaveAdd reaches 0
+            if (!$leaveAdd) {
+                $add += 2;
+                $leaveAdd = 4;
+            } else {
+                $leaveAdd--;
+            }
+        }
+        return $diag;
+    }
 }
