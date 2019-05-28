@@ -23,4 +23,26 @@ class PrimesTest extends TestCase
             Primes::getPrimesBelow($limit)
         );
     }
+
+    public function testGeneratePrimesKeyArray()
+    {
+        $limit = 10;
+        $expected = [2 => true, 3 => true, 5 => true, 7 => true];
+        $this->assertEquals(
+            $expected,
+            Primes::generatePrimesKeyedArray($limit)
+        );
+    }
+
+    public function testQuadraticPrimesCount()
+    {
+        $a = 1;
+        $b = 41;
+        $primes = Primes::generatePrimesKeyedArray(5000);
+        $expected = 40;
+        $this->assertEquals(
+            $expected,
+            Primes::quadraticPrimesCount($a, $b, $primes)
+        );
+    }
 }
