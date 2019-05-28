@@ -14,7 +14,7 @@ class Solution10 extends BaseSolution implements SolutionInterface
      */
     public function run()
     {
-        $limit = 10000000;
+        $limit = 2000000;
         $primes = Primes::getPrimesBelow($limit);
         return array_sum($primes);
     }
