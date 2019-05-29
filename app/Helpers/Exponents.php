@@ -16,4 +16,14 @@ class Exponents
         }
         return $c;
     }
+
+    public static function sumOfPowerOfDigits(int $number, int $power): int
+    {
+        $number = str_split((string) $number);
+        $sum = 0;
+        foreach ($number as $digit) {
+            $sum += pow($digit, $power);
+        }
+        return $sum;
+    }
 }

@@ -15,4 +15,15 @@ class ExponentsTest extends TestCase
             Exponents::modularExponentiation1($base, $exponent, $modulus)
         );
     }
+
+    public function testSumOfPowerOfDigits()
+    {
+        $number = 1634;
+        $power = 4;
+        $expected = 1634;
+        $this->assertEquals(
+            $expected,
+            Exponents::sumOfPowerOfDigits($number, $power)
+        );
+    }
 }
